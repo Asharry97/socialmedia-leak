@@ -1,4 +1,4 @@
-var leakSocialMediaAccounts = function(callback) {
+var leakSocialMediaAccounts = function (callback) {
     var platforms = [{
         domain: "https://squareup.com",
         redirect: "/login?return_to=%2Ffavicon.ico",
@@ -137,57 +137,15 @@ var leakSocialMediaAccounts = function(callback) {
         name: "VK"
     }];
 
-    platforms.forEach(function(network) {
+    platforms.forEach(function (network) {
         var img = document.createElement('img');
-        img.referrerPolicy = 'no-referrer';
+        //img.referrerPolicy = 'no-referrer'; // Testing 
         img.src = network.domain + network.redirect;
-        img.onload = function() {
+        img.onload = function () {
             callback(network, true);
         };
-        img.onerror = function() {
+        img.onerror = function () {
             callback(network, false);
         };
     });
 };
-
-
-
-// Do not work (anymore)
-// {
-//     url: "https://login.live.com/login.srf?wa=wsignin1.0&wreply=https%3A%2F%2Fprofile.microsoft.com%2FregsysProfilecenter%2FImages%2FLogin.jpg",
-//     name: "Microsoft"
-// }, {
-//     url: "https://slack.com/signin?redir=%2Ffavicon.ico",
-//     name: "Slack"
-// }, {
-//     url: "https://tablet.www.linkedin.com/splash?redirect_url=https%3A%2F%2Fwww.linkedin.com%2Ffavicon.ico%3Fgid%3D54384%26trk%3Dfulpro_grplogo",
-//     name: "Linkedin"
-// }, {
-//      domain: "https://subscribe.washingtonpost.com/loginregistration/index.html#/register/group/default?action=login&destination=https:%2F%2Fwashingtonpost.com%2Ffavicon.ico",
-//      redirect: "/login/?previous=/favicon.ico",
-//      name: "Washington Post"
-// }, {
-//      domain: "https://www.instagram.com",
-//      redirect: "/accounts/login/?next=%2Ffavicon.ico",
-//      name: "Instagram"
-//  },{
-//     domain: "https://www.spiegel.de",
-//     redirect: "/meinspiegel/login.html?backUrl=%2Ffavicon.ico",
-//     name: "Spiegel Online"
-// },{
-//     domain: "http://www.youporn.com",
-//     redirect: "/login/?previous=/favicon.ico",
-//     name: "YouPorn"
-// },{
-//     domain: "https://stackoverflow.com",
-//     redirect: "/users/login?ssrc=head&returnurl=http%3a%2f%2fstackoverflow.com%2ffavicon.ico",
-//     name: "Stack Overflow"
-// },{
-//     domain: "https://www.netflix.com",
-//     redirect: "/Login?nextpage=%2Ffavicon.ico",
-//     name: "Netflix"
-// },{
-//      domain: "https://www.flickr.com",
-//      redirect: "/signin/yahoo/?redir=https%3A%2F%2Fwww.flickr.com/favicon.ico",
-//      name: "Flickr"
-//   }
